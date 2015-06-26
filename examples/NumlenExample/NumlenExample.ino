@@ -1,13 +1,13 @@
 //Demonstrates the use of the Numlen library to determine the number of characters required to display a number.
 #include "Numlen.h"
-int8_t unsignedByteNumber=-15;  //signed byte
-byte byteNumber=0;
-long longNumber=-100000;
-unsigned long unsignedLongNumber=200000;
+const int8_t unsignedByteNumber = -15; //signed byte
+const byte byteNumber = 0;
 const int16_t intNumber = -20000;
 const uint16_t unsignedIntNumber = 40000;
+const long longNumber = -100000;
+const unsigned long unsignedLongNumber = 200000;
 
-void setup(){
+void setup() {
   Serial.begin(9600);
   Serial.print(F("unsignedByteNumber: "));
   Serial.println(unsignedByteNumber);
@@ -35,7 +35,7 @@ void setup(){
   Serial.println(Numlen.numlen(unsignedLongNumber));
 }
 
-void loop(){
+void loop() {
 }
 
-  
+
