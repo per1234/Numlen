@@ -2,10 +2,10 @@
 #include "Numlen.h"
 int8_t unsignedByteNumber=-15;  //signed byte
 byte byteNumber=0;
-int intNumber=-20000;
-unsigned int unsignedIntNumber=40000;
 long longNumber=-100000;
 unsigned long unsignedLongNumber=200000;
+const int16_t intNumber = -20000;
+const uint16_t unsignedIntNumber = 40000;
 
 void setup(){
   Serial.begin(9600);
