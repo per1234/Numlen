@@ -5,16 +5,16 @@ Arduino library that returns the number of characters required to display a numb
 
 #### Installation
 - Download the most recent version of Numlen: https://github.com/per1234/Numlen/archive/master.zip
-- Extract the Numlen-master folder from the downloaded zip file.
-- Rename the folder Numlen.
-- Move the folder to your arduino sketchbook\libraries folder.
-- Restart the Arduino IDE if it is open.
-- See the included NumlenExample.ino for demonstration of usage.
+- Using Arduino IDE 1.0.x:
+  - Sketch > Import Library... > Add Library... > select the downloaded file > Open
+- Using Arduino IDE 1.5+:
+  - Sketch > Include Library > Add ZIP Library... > select the downloaded file > Open
 
 #### Usage
+See the included NumlenExample.ino for demonstration of usage.
+
 `Numlen.numlen(number)` - Determine the length of a number.
 - Parameter: number - The number that you want to determine the length of.
   - Type: signed or unsigned byte/int/long
 - Returns: none
   - Type: byte
-
