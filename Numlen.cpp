@@ -1,5 +1,4 @@
 // Returns the number of characters required to display a number in base 10. This is useful for converting numbers to text. It works for signed or unsigned byte, int and long. http://github.com/per1234/Numlen
-#include "Arduino.h"
 #include "Numlen.h"
 
 byte NumlenClass::numlen(int8_t input) {
