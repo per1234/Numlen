@@ -14,7 +14,7 @@ Numlen
 #### Usage
 See **File > Examples > Numlen > NumlenExample** for demonstration of usage.
 
-`Numlen.numlen(number)` - Determine the length of a number.
+**`Numlen.numlen(number)`** - Determine the number of characters required to display a number in base 10.
 - Parameter: **number** - The number that you want to determine the length of.
   - Type: signed or unsigned byte/int/long
 - Returns: none
