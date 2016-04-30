@@ -14,6 +14,9 @@ Numlen
 #### Usage
 See **File > Examples > Numlen > NumlenExample** for demonstration of usage.
 
+##### `#include <Numlen.h>`
+Allow access to the functions of the Numlen library.
+
 ##### `Numlen.numlen(number)`
 Determine the number of characters required to display a number in base 10.
 - Parameter: **number** - The number that you want to determine the length of.
