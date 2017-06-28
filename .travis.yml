@@ -1,0 +1,58 @@
+# This file is used to configure the Travis CI tests of this library
+
+language: bash
+sudo: required
+
+
+env:
+  global:
+    # The Arduino IDE will be installed at APPLICATION_FOLDER/arduino
+    - APPLICATION_FOLDER="${HOME}/arduino-ide"
+    - SKETCHBOOK_FOLDER="${HOME}/arduino-sketchbook"
+
+
+before_install:
+  - git clone https://github.com/per1234/arduino-ci-script.git "${HOME}/scripts"
+  - source "${HOME}/scripts/arduino-ci-script.sh"
+
+  # Uncomment the following lines to get verbose output for debugging
+  # Print shell input lines as they are read.
+  #- set_verbose_script_output "true"
+  # Print a trace of simple commands.
+  #- set_more_verbose_script_output "true"
+  # Turn on verbose output during compilation
+  #- set_verbose_output_during_compilation "true"
+
+  # Check for library issues that don't affect compilation
+  - set_library_testing "true"
+
+  - set_application_folder "$APPLICATION_FOLDER"
+  - set_sketchbook_folder "$SKETCHBOOK_FOLDER"
+
+  - install_ide "1.6.0" "hourly"
+
+  # Install the library from the repository
+  - install_library
+
+
+script:
+  # Compile all example sketches included with the library
+  # build_sketch arguments: sketch name, fqbn, allow failure, IDE version/list/range
+  - build_sketch "${SKETCHBOOK_FOLDER}/libraries/Numlen/examples" "arduino:avr:uno" "false" "oldest" "newest"
+  # Test with the hourly build of the Arduino IDE to get a warning of any incompatibilities created by recent IDE changes but allow failure because failure may be caused by bugs or changes to the IDE that will be reverted.
+  - build_sketch "${SKETCHBOOK_FOLDER}/libraries/Numlen/examples" "arduino:avr:uno" "true" "hourly"
+
+
+after_script:
+  # Commit a report of the job results to the CI-reports repository
+  - USER_NAME="$(echo "$TRAVIS_REPO_SLUG" | cut -d'/' -f 1)"
+  - REPOSITORY_NAME="$(echo "$TRAVIS_REPO_SLUG" | cut -d'/' -f 2)"
+  - publish_report_to_repository "$REPORT_GITHUB_TOKEN" "https://github.com/${USER_NAME}/CI-reports.git" "$REPOSITORY_NAME" "build_$(printf "%05d\n" "${TRAVIS_BUILD_NUMBER}")" "false"
+  # Print a tab separated report of all sketch verification results to the log
+  - display_report
+
+
+notifications:
+  email:
+    on_success: always
+    on_failure: always
