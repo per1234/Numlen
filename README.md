@@ -27,4 +27,3 @@ Determine the number of characters required to display a number in base 10.
 
 #### Contributing
 Pull requests or issue reports are welcome! Please see the [contribution rules](https://github.com/per1234/NumLen/blob/master/CONTRIBUTING.md) for instructions.
-

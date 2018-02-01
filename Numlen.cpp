@@ -131,4 +131,3 @@ byte NumlenClass::numlen(uint32_t input) {
 }
 
 NumlenClass Numlen;
-

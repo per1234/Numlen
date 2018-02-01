@@ -15,4 +15,3 @@ class NumlenClass {
 };
 extern NumlenClass Numlen;
 #endif
-
